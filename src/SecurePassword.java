@@ -1,8 +1,10 @@
+import java.util.Locale;
+
 public class SecurePassword {
     // instance variable
     private String password;
 
-    // constructor
+        // constructor
     public SecurePassword(String password) {
         this.password = password;
     }
@@ -58,7 +60,7 @@ public class SecurePassword {
        and false otherwise.
      */
     private boolean isLongEnough() {
-        /* to be implemented */
+        return password.length() >= 8;
     }
 
 
@@ -66,22 +68,26 @@ public class SecurePassword {
      */
     private boolean containsUppercase() {
         /* this one is completed for you as a hint for how to do the others! */
-        String upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        return checkString(upperCaseLetters);  // this method implemented below
+//        String upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//        return checkString(upperCaseLetters);  // this method implemented below
+         return !(password.equals(password.toLowerCase()));
+
     }
 
 
     /* Returns true if the password has at least one lowercase letter and false otherwise.
      */
     private boolean containsLowercase() {
-        /* to be implemented */
+        return !(password.equals(password.toUpperCase()));
     }
 
 
     /* Returns true if the password has at least one digit and false otherwise.
      */
     private boolean containsDigit() {
-        /* to be implemented */
+        String s = "1235790";
+        return checkString(s);
+
     }
 
 
@@ -89,7 +95,8 @@ public class SecurePassword {
        ! @ # $ % ^ & * ?    and false otherwise.
      */
     private boolean containsSpecialSymbol() {
-        /* to be implemented */
+        String s = "!@#$%^&*?";
+        return checkString(s);
     }
 
     /* Checks characterString to see if password contains at least one
@@ -101,8 +108,15 @@ public class SecurePassword {
        this method will return false, since password contains none of the characters in
         characterString.
      */
+
     private boolean checkString(String characterString) {
-        /* to be implemented */
+        for (int i = 0; i<password.length(); i++) {
+            if (characterString.contains(password.substring(i, i + 1))) {
+                return true;
+            }
+
+        }
+        return false;
     }
 }
 
