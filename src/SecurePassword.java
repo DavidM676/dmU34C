@@ -24,9 +24,7 @@ public class SecurePassword {
        Return false if any of the above security requirements are not fulfilled.
     */
     public boolean isSecure() {
-        /* to be implemented */
-        // You should first write the six private "helper" methods
-        // below and use them as needed in this method’s implementation
+        return (isLongEnough()&&containsUppercase()&&containsLowercase()&&containsDigit()&&containsSpecialSymbol());
     }
 
 
@@ -45,10 +43,26 @@ public class SecurePassword {
         The password must contain a special symbol: ! @ # $ % ^ & * ?"
     */
     public String status() {
-        /* to be implemented */
-
-        // You should first write the six private "helper" methods
-        // below and use them as needed in this method’s implementation
+        if (isSecure()) {
+            return "Password is secure\n";
+        } else {
+            if (!(isLongEnough())) {
+                return "The password must be at least 8 characters";
+            }
+            if (!(containsUppercase())) {
+                return "The password must contain at least one uppercase character";
+            }
+            if (!(containsLowercase())) {
+                return "The password must contain at least one lowercase character";
+            }
+            if (!(containsDigit())) {
+                return "The password must contain at least one digit";
+            }
+            if (!(containsSpecialSymbol())) {
+                return "The password must contain at least one special symbol";
+            }
+        }
+        return null;
     }
 
 
@@ -85,7 +99,7 @@ public class SecurePassword {
     /* Returns true if the password has at least one digit and false otherwise.
      */
     private boolean containsDigit() {
-        String s = "1235790";
+        String s = "1234567890";
         return checkString(s);
 
     }

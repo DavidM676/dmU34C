@@ -13,16 +13,21 @@ public class PasswordClient {
         System.out.print("\nEnter your secure password: ");
         String password = scanner.nextLine();
 
-    /* to be implemented
-       create and use a SecurePassword object with the user’s password and determine
-       if it’s secure using the isSecure() method.
+        SecurePassword sp = new SecurePassword(password);
 
-       If it isn’t secure enough, provide them a status update using the status() method
-       and prompting them to try repeatedly until they have a password that
-       meets all requirements, at which point tell them "Password is secure" and end.
+        boolean run = true;
+        while (run) {
+            System.out.println(sp.status());
+            if (!(sp.isSecure())) {
+                System.out.print("\nEnter your secure password: ");
+                sp.setPassword(scanner.nextLine());
+            } else {
+               run = false;
+            }
 
-       Note that, as the user provides updated passwords, you will need to update the
-       password in your SecurePassword object using the setter method, .setPassword(),
-    */
+
+
+        }
+
     }
 }
